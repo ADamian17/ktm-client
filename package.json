@@ -3,22 +3,35 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "concurrently -k -p \"[{name}]\" -n \"next,codegen\" -c \"cyan,green\" \"npm run dev:next\" \"npm run gen:watch\"",
+    "dev:next": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "gen:watch": "graphql-codegen --config codegen.ts --watch",
+    "gen:types": "graphql-codegen --config codegen.ts"
   },
   "dependencies": {
+    "final-form": "^4.20.10",
+    "graphql": "^16.9.0",
+    "next": "14.2.13",
+    "next-auth": "^5.0.0-beta.21",
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.2.13"
+    "react-final-form": "^6.5.9"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@graphql-codegen/cli": "^5.0.2",
+    "@graphql-codegen/client-preset": "^4.3.3",
+    "@parcel/watcher": "^2.4.1",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "concurrently": "^9.0.1",
     "eslint": "^8",
-    "eslint-config-next": "14.2.13"
+    "eslint-config-next": "14.2.13",
+    "graphql-codegen-apollo-next-ssr": "^1.7.4",
+    "prettier": "^3.3.3",
+    "typescript": "^5"
   }
 }
