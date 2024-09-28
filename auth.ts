@@ -1,7 +1,7 @@
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { authConfig } from "./auth.config";
-import { SigninUserDocument } from "@/__generated__/graphql";
+import { SignInUserDocument } from "@/__generated__/graphql";
 import { executeApiReq } from "./utils/executeApiReq";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
@@ -14,7 +14,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           "email" | "password",
           string
         >;
-        const data = await executeApiReq(SigninUserDocument, {
+        const data = await executeApiReq(SignInUserDocument, {
           email,
           password,
         });

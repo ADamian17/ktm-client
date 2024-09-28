@@ -1,19 +1,20 @@
 import React from 'react';
-import { signInAction } from './action';
+
+import SignInForm from '@/components/SignInForm';
+import SignInSignUpWrapper from '@/components/SignInSignUpWrapper';
 
 const SignInPage = () => {
   return (
-    <div>
-      <div>
-        <h2>sign in page</h2>
-      </div>
-
-      <form action={signInAction}>
-        <input type="text" name="email" id="email" placeholder="email" />
-        <input type="password" name="password" id="password" placeholder="password" />
-        <button type='submit'>Sign In</button>
-      </form>
-    </div>
+    <SignInSignUpWrapper
+      title="Welcome back to KTM"
+      linkInfo={{
+        copy: "Don't have an account?",
+        text: "Sign up",
+        path: "/sign-up"
+      }}
+    >
+      <SignInForm />
+    </SignInSignUpWrapper>
   )
 }
 

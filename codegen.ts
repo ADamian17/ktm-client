@@ -6,7 +6,7 @@ loadEnvConfig(projectDir);
 
 const config: CodegenConfig = {
   overwrite: true,
-  schema: "http://localhost:3001/graphql",
+  schema: process.env.NEXT_PUBLIC_GRAPHQL_API_URL,
   documents: "**/*.graphql",
   generates: {
     "__generated__/": {
