@@ -3,14 +3,24 @@ import React from "react";
 import { Button, PasswordInput, TextInput } from '@mantine/core';
 import { Field, Form, FormProps } from "react-final-form";
 import { signInAction } from './action';
+import { notifications } from "@mantine/notifications";
+import styles from './SignInForm.module.scss'
 
 const SignInForm = () => {
   const onSubmit: FormProps["onSubmit"] = async (values) => {
     try {
       const signIn = signInAction.bind(values)
       const res = await signIn(values)
-      if (typeof res === "object") {
-        console.log(res.error);
+      if (typeof res === "object" && res?.error) {
+        notifications.show({
+          autoClose: false,
+          color: "red",
+          message: res.error,
+          position: "top-right",
+          title: 'Sign in failed',
+          classNames: styles
+        })
+
         return
       }
     } catch (error) {
