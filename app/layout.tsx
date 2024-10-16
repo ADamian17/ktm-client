@@ -1,14 +1,14 @@
+import { ColorSchemeScript, createTheme, MantineProvider } from '@mantine/core';
+import { ModalsProvider } from '@mantine/modals';
+import { Notifications } from '@mantine/notifications';
+
 import '@mantine/core/styles.css';
 import '@mantine/notifications/styles.css';
-
-import { ColorSchemeScript, createTheme, MantineProvider } from '@mantine/core';
-import { Notifications } from '@mantine/notifications';
 
 export const metadata = {
   title: 'Kanban Board',
   description: 'A simple kanban board',
 };
-
 
 const theme = createTheme({});
 
@@ -25,7 +25,9 @@ export default function RootLayout({
       <body>
         <MantineProvider defaultColorScheme='auto' theme={theme}>
           <Notifications />
-          {children}
+          <ModalsProvider>
+            {children}
+          </ModalsProvider>
         </MantineProvider>
       </body>
     </html>
