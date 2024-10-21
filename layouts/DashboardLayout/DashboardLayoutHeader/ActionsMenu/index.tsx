@@ -1,6 +1,7 @@
-import { ActionIcon, Menu, MenuDivider, MenuDropdown, MenuItem, MenuLabel, MenuTarget, rem } from '@mantine/core'
-import { IconDotsVertical, IconLogout } from '@tabler/icons-react'
+import { ActionIcon, Menu, MenuDivider, MenuDropdown, MenuItem, MenuLabel, MenuTarget } from '@mantine/core'
+import { IconDotsVertical } from '@tabler/icons-react'
 import React from 'react'
+import LogoutMenuItem from './LogoutMenuItem'
 
 const ActionsMenu = () => {
   return (
@@ -18,13 +19,8 @@ const ActionsMenu = () => {
         <MenuDivider />
 
         <MenuLabel>Settings</MenuLabel>
-        <MenuItem
-          leftSection={
-            <IconLogout style={{ width: rem(16), height: rem(16) }} stroke={1.5} />
-          }
-        >
-          Logout
-        </MenuItem>
+
+        <LogoutMenuItem />
       </MenuDropdown>
     </Menu>
   )

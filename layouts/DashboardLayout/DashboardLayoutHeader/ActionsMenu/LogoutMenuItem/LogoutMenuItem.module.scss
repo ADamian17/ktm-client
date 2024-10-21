@@ -1,0 +1,9 @@
+.logoutInput {
+  background-color: transparent;
+  padding: 0;
+  outline: none;
+  border: none;
+  font-size: var(--mantine-font-size-sm);
+  color: var(--menu-item-color, var(--mantine-color-text));
+  cursor: pointer;
+}
