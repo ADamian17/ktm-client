@@ -124,23 +124,6 @@ export default function Home() {
     //     </AppShellSection>
 
     //     <AppShellSection>
-    //       <Card>
-    //         <Group justify="center">
-    //           <IconSun
-    //             style={{ width: rem(16), height: rem(16) }}
-    //             stroke={2.5}
-    //             fill="currentColor"
-    //           />
-
-    //           <Switch color="violet" />
-
-    //           <IconMoonStars
-    //             style={{ width: rem(16), height: rem(16) }}
-    //             stroke={2.5}
-    //             fill="currentColor"
-    //           />
-    //         </Group>
-    //       </Card>
     //     </AppShellSection>
     //   </AppShellNavbar> */}
 

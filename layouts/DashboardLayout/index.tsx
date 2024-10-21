@@ -1,9 +1,10 @@
 "use client"
 import { WithChildrenType } from '@/types';
-import { ActionIcon, AppShell, AppShellMain, Drawer } from '@mantine/core';
+import { ActionIcon, AppShell, AppShellMain, Drawer, Group, rem, ScrollArea, Stack, Text } from '@mantine/core';
 import DashboardLayoutHeader from './DashboardLayoutHeader';
-import { IconMenu4 } from '@tabler/icons-react';
+import { IconEyeOff, IconMenu4 } from '@tabler/icons-react';
 import { useDisclosure } from '@mantine/hooks';
+import ColorThemeToggle from '@/components/ColorThemeToggle';
 
 const DashboardLayout = ({ children }: WithChildrenType) => {
   const [opened, { open, close }] = useDisclosure(false);
@@ -25,8 +26,8 @@ const DashboardLayout = ({ children }: WithChildrenType) => {
           p="md"
           radius="lg"
           variant='filled'
-          w={56}
-          h={48}
+          w={rem(56)}
+          h={rem(48)}
         >
           <IconMenu4 size={18} />
         </ActionIcon>
@@ -39,9 +40,30 @@ const DashboardLayout = ({ children }: WithChildrenType) => {
           size="sm"
           withCloseButton={false}
           radius="sm"
-          title="All Boards (3)"
         >
-          Drawer content
+          <Stack style={{ height: "90vh" }}>
+            <Text>All Boards (3)</Text>
+
+            <ScrollArea h="100%">
+              ... content
+            </ScrollArea>
+
+            <ColorThemeToggle />
+
+            <ActionIcon
+              color="gray"
+              p="md"
+              radius="lg"
+              variant='transparent'
+              w="fit-content"
+            >
+              <Group onClick={() => close()}>
+                <IconEyeOff size={18} />
+
+                <Text>Hide Sidebar</Text>
+              </Group>
+            </ActionIcon>
+          </Stack>
         </Drawer>
       </AppShellMain>
     </AppShell>
