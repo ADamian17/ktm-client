@@ -8,7 +8,7 @@ const DashboardLayout = ({ children }: WithChildrenType) => {
   return (
     <AppShell
       header={{ height: { base: 64, md: 80, lg: 97 } }}
-      padding="xl"
+      padding={{ base: 16, md: 24 }}
     >
       <DashboardLayoutHeader>
         <AllBoardNavigation />
@@ -16,7 +16,6 @@ const DashboardLayout = ({ children }: WithChildrenType) => {
 
       <AppShellMain>
         {children}
-
         <DashboardLayoutAsideMenu>
           <AllBoardNavigation />
         </DashboardLayoutAsideMenu>

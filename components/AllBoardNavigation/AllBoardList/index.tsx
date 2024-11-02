@@ -4,12 +4,12 @@ import Link from 'next/link';
 import { Anchor } from '@mantine/core';
 import { IconLayoutBoard } from '@tabler/icons-react';
 import { usePathname } from 'next/navigation'
-import { AllBoardsQuery } from '@/__generated__/graphql';
+import { AllBoardsNavigationQuery } from '@/__generated__/graphql';
 
 import styles from "./AllBoardList.module.scss";
 
 type AllBoardListProps = {
-  boards: AllBoardsQuery['getAllBoards']['nodes']
+  boards: AllBoardsNavigationQuery['getAllBoards']['nodes']
 }
 
 const AllBoardList: React.FC<AllBoardListProps> = ({ boards }) => {

@@ -5,7 +5,6 @@ import Logo from '@/layouts/DashboardLayout/DashboardLayoutHeader/Logo';
 const DashboardRootLayout = ({ children }: WithChildrenType) => (
   <AppShell
     header={{ height: { base: 64, md: 80, lg: 97 } }}
-    padding="xl"
   >
     <AppShellHeader>
       <Group align='center' justify='space-between' h="100%" pl={24} pr={24}>

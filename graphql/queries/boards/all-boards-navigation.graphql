@@ -1,13 +1,10 @@
-query AllBoards {
+query AllBoardsNavigation {
   getAllBoards {
     count
     nodes {
       id
       name
       uri
-      columns {
-        count
-      }
     }
   }
 }
