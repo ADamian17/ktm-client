@@ -4,6 +4,7 @@ import { Notifications } from '@mantine/notifications';
 
 import '@mantine/core/styles.css';
 import '@mantine/notifications/styles.css';
+import HandleUserInactivity from '@/features/HandleUserInactivity';
 
 export const metadata = {
   title: 'Kanban Board',
@@ -24,6 +25,7 @@ export default function RootLayout({
       </head>
       <body>
         <MantineProvider defaultColorScheme='auto' theme={theme}>
+          <HandleUserInactivity />
           <Notifications />
           <ModalsProvider>
             {children}
