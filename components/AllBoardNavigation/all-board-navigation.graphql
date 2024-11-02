@@ -1,0 +1,10 @@
+query AllBoardNavigation {
+  getAllBoards {
+    count
+    nodes {
+      id
+      name
+      uri
+    }
+  }
+}

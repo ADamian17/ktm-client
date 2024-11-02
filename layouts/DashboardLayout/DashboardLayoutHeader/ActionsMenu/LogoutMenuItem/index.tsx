@@ -12,7 +12,7 @@ const LogoutMenuItem = () => {
   return (
     <MenuItem leftSection={logoutIcon}>
       <form action={logoutAction}>
-        <input type="submit" name="Logout" className={styles.logoutInput} />
+        <input type="submit" name="Logout" value="logout" className={styles.logoutInput} />
       </form>
     </MenuItem>
   )
