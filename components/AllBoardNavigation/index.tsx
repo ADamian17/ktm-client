@@ -1,12 +1,12 @@
 import { Suspense } from "react";
 import { ScrollArea, Text } from "@mantine/core";
 
-import { AllBoardNavigationDocument } from "@/__generated__/graphql";
+import { AllBoardsDocument } from "@/__generated__/graphql";
 import { executeApiReq } from "@/utils/executeApiReq";
 import AllBoardList from "./AllBoardList";
 
 const AllBoardNavigation = async () => {
-  const data = await executeApiReq(AllBoardNavigationDocument);
+  const data = await executeApiReq(AllBoardsDocument);
 
   if (!data?.getAllBoards?.nodes || !data?.getAllBoards?.count) return null;
 

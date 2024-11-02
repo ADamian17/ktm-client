@@ -1,4 +1,4 @@
-query AllBoardNavigation {
+query AllBoards {
   getAllBoards {
     count
     nodes {

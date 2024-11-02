@@ -8,7 +8,7 @@ const DashboardLayout = ({ children }: WithChildrenType) => {
   return (
     <AppShell
       header={{ height: { base: 64, md: 80, lg: 97 } }}
-      navbar={{ width: { base: 200, md: 300 }, breakpoint: 'sm' }}
+      padding="xl"
     >
       <DashboardLayoutHeader>
         <AllBoardNavigation />
