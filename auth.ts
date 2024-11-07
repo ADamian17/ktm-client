@@ -19,11 +19,17 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           password,
         });
 
-        if (!data?.signInUser?.user && !data?.signInUser?.token) return null;
+        if (
+          !data?.signInUser?.user &&
+          !data?.signInUser?.accessToken &&
+          !data?.signInUser?.refreshToken
+        )
+          return null;
 
         return {
           id: data?.signInUser?.user?.id,
-          signedJwt: data?.signInUser?.token,
+          accessToken: data?.signInUser?.accessToken ?? undefined,
+          refreshToken: data?.signInUser?.refreshToken ?? undefined,
         };
       },
     }),

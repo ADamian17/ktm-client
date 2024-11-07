@@ -1,12 +1,11 @@
 import { TypedDocumentString } from "@/__generated__/graphql";
-import { auth } from "@/auth";
 import { GraphQLError } from "graphql";
 
 type GQLResponse<GraphQLData> =
   | { data: GraphQLData }
   | { errors: GraphQLError[] };
 
-export const executeApiReq = async <Result, Variables>(
+export const executeApiReqNoHeaders = async <Result, Variables>(
   document: TypedDocumentString<Result, Variables>,
   variables?: Variables, // Add a new parameter for variables
 ): Promise<Result> => {
@@ -18,14 +17,6 @@ export const executeApiReq = async <Result, Variables>(
   const headers: Record<string, string> = {
     "Content-Type": "application/json",
   };
-
-  /* NOTE ==   get stored token to send it with the request    == */
-  const session = await auth();
-
-  if (session?.user && "accessToken" in session.user) {
-    headers["Authorization"] = `Bearer ${session.user.accessToken}`;
-  }
-  /* ============================================================ */
 
   const response = await fetch(process.env.NEXT_PUBLIC_GRAPHQL_API_URL!, {
     method: "POST",
