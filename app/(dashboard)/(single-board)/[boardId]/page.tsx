@@ -1,6 +1,8 @@
+import { Suspense } from "react";
+
 const BoardPage = ({ params }: { params: Promise<{ boardId: string }> }) => {
   return (
-    <>BoardPage: {JSON.stringify(params)} </>
+    <Suspense fallback={<p>Loading...</p>}>BoardPage: {JSON.stringify(params)} </Suspense>
   );
 }
 

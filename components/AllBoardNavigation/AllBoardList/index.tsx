@@ -1,7 +1,7 @@
 "use client";
 import React from 'react'
 import Link from 'next/link';
-import { Anchor } from '@mantine/core';
+import { Anchor, Button } from '@mantine/core';
 import { IconLayoutBoard } from '@tabler/icons-react';
 import { usePathname } from 'next/navigation'
 import { AllBoardsNavigationQuery } from '@/__generated__/graphql';
@@ -31,6 +31,11 @@ const AllBoardList: React.FC<AllBoardListProps> = ({ boards }) => {
   return (
     <div>
       {links}
+
+      <Button c='violet' variant='transparent' className={styles.createNewBoardCta} h="fit-content">
+        <IconLayoutBoard className={styles.linkIcon} stroke={1.5} color='#9775fa' />
+        <span>Create new dashboard</span>
+      </Button>
     </div>
   )
 }
