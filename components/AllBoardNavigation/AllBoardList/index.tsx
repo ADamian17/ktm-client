@@ -7,6 +7,9 @@ import { usePathname } from 'next/navigation'
 import { AllBoardsNavigationQuery } from '@/__generated__/graphql';
 
 import styles from "./AllBoardList.module.scss";
+import { openCreateDashboardModal } from '@/stores/createDashboardModalProxy';
+import { closeAsideMenu } from '@/stores/asideMenuProxy';
+import { closeHeaderMenu } from '@/stores/headerMenuProxy';
 
 type AllBoardListProps = {
   boards: AllBoardsNavigationQuery['getAllBoards']['nodes']
@@ -15,24 +18,34 @@ type AllBoardListProps = {
 const AllBoardList: React.FC<AllBoardListProps> = ({ boards }) => {
   const pathname = usePathname();
 
-  const links = (boards ?? []).map((item) => (
-    <Anchor
-      component={Link}
-      className={styles.link}
-      data-active={item?.uri === pathname || undefined}
-      href={item?.uri ?? ''}
-      key={item?.id ?? ''}
-    >
-      <IconLayoutBoard className={styles.linkIcon} stroke={1.5} />
-      <span>{item?.name}</span>
-    </Anchor>
-  ));
+  const handleOpenCreateBoardModal = () => {
+    closeAsideMenu();
+    closeHeaderMenu()
+    openCreateDashboardModal();
+  }
+
+  const handleLinkClick = () => {
+    closeAsideMenu()
+    closeHeaderMenu()
+  }
 
   return (
     <div>
-      {links}
+      {(boards ?? []).map((item) => (
+        <Anchor
+          component={Link}
+          className={styles.link}
+          data-active={item?.uri === pathname || undefined}
+          href={item?.uri ?? ''}
+          key={item?.id ?? ''}
+          onClick={handleLinkClick}
+        >
+          <IconLayoutBoard className={styles.linkIcon} stroke={1.5} />
+          <span>{item?.name}</span>
+        </Anchor>
+      ))}
 
-      <Button c='violet' variant='transparent' className={styles.createNewBoardCta} h="fit-content">
+      <Button c='violet' variant='transparent' className={styles.createNewBoardCta} h="fit-content" onClick={handleOpenCreateBoardModal}>
         <IconLayoutBoard className={styles.linkIcon} stroke={1.5} color='#9775fa' />
         <span>Create new dashboard</span>
       </Button>

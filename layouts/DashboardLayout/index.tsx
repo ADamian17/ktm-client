@@ -3,6 +3,7 @@ import { WithChildrenType } from '@/types';
 import AllBoardNavigation from '@/components/AllBoardNavigation';
 import DashboardLayoutAsideMenu from './DashboardLayoutAsideMenu';
 import DashboardLayoutHeader from './DashboardLayoutHeader';
+import CreateDashboardModal from '@/components/CreateDashboardModal';
 
 const DashboardLayout = ({ children }: WithChildrenType) => {
   return (
@@ -16,9 +17,12 @@ const DashboardLayout = ({ children }: WithChildrenType) => {
 
       <AppShellMain>
         {children}
+
         <DashboardLayoutAsideMenu>
           <AllBoardNavigation />
         </DashboardLayoutAsideMenu>
+
+        <CreateDashboardModal />
       </AppShellMain>
     </AppShell>
   )

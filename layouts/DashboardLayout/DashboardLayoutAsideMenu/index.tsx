@@ -1,25 +1,17 @@
 "use client"
+import React from 'react'
 import ColorThemeToggle from '@/components/ColorThemeToggle'
+import { asideMenuProxy, closeAsideMenu, openAsideMenu } from '@/stores/asideMenuProxy'
 import { ActionIcon, Drawer, Group, rem, Stack, Text } from '@mantine/core'
-import { useDisclosure } from '@mantine/hooks'
 import { IconEyeOff, IconMenu4 } from '@tabler/icons-react'
-import { usePathname } from 'next/navigation'
-import React, { useEffect } from 'react'
+import { useSnapshot } from 'valtio'
 
 type DashboardLayoutAsideMenuProps = {
   children: React.ReactNode
 }
 
 const DashboardLayoutAsideMenu: React.FC<DashboardLayoutAsideMenuProps> = ({ children }) => {
-  const pathname = usePathname();
-  const [opened, { open, close }] = useDisclosure(false);
-
-  useEffect(() => {
-    if (opened) {
-      close()
-      return
-    }
-  }, [pathname, close]) // eslint-disable-line
+  const { isOpen } = useSnapshot(asideMenuProxy)
 
   return (
     <>
@@ -27,7 +19,7 @@ const DashboardLayoutAsideMenu: React.FC<DashboardLayoutAsideMenuProps> = ({ chi
         visibleFrom="sm"
         style={{ position: 'fixed', bottom: 32, left: 10 }}
         color="violet"
-        onClick={open}
+        onClick={openAsideMenu}
         p="md"
         radius="lg"
         variant='filled'
@@ -40,8 +32,8 @@ const DashboardLayoutAsideMenu: React.FC<DashboardLayoutAsideMenuProps> = ({ chi
       <Drawer
         visibleFrom="sm"
         offset={8}
-        onClose={close}
-        opened={opened}
+        onClose={closeAsideMenu}
+        opened={isOpen}
         size="sm"
         withCloseButton={false}
         radius="sm"
@@ -58,7 +50,7 @@ const DashboardLayoutAsideMenu: React.FC<DashboardLayoutAsideMenuProps> = ({ chi
             variant='transparent'
             w="fit-content"
           >
-            <Group onClick={() => close()}>
+            <Group onClick={() => closeAsideMenu()}>
               <IconEyeOff size={18} />
 
               <Text>Hide Sidebar</Text>
