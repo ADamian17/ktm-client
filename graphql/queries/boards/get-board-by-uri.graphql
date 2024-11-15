@@ -1,8 +1,10 @@
-query GetOneBoardByUri($uri: String) {
+query GetOneBoardById($uri: String) {
   getOneBoard(uri: $uri) {
     id
     name
     uri
+    createdAt
+    updatedAt
     columns {
       nodes {
         tasks {

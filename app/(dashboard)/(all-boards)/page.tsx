@@ -29,7 +29,7 @@ export default async function Home() {
             <Card key={board?.id} withBorder shadow="sm" radius="md">
               <CardSection withBorder inheritPadding py="xs">
                 <Group justify="space-between">
-                  <Anchor component={Link} href={board?.uri ?? ''} prefetch>
+                  <Anchor component={Link} href={board?.uri ?? ''} prefetch c="white">
                     <Text fw={500}>{board?.name}</Text>
                   </Anchor>
 

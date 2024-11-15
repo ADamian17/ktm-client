@@ -7,9 +7,9 @@ import { usePathname } from 'next/navigation'
 import { AllBoardsNavigationQuery } from '@/__generated__/graphql';
 
 import styles from "./AllBoardList.module.scss";
-import { openCreateDashboardModal } from '@/stores/createDashboardModalProxy';
-import { closeAsideMenu } from '@/stores/asideMenuProxy';
-import { closeHeaderMenu } from '@/stores/headerMenuProxy';
+import { openCreateDashboardModal } from '@/stores/create-dashboard-modal-proxy';
+import { closeAsideMenu } from '@/stores/aside-menu-proxy';
+import { closeHeaderMenu } from '@/stores/header-menu-proxy';
 
 type AllBoardListProps = {
   boards: AllBoardsNavigationQuery['getAllBoards']['nodes']

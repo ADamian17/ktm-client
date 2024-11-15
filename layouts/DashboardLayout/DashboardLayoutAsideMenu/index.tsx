@@ -1,7 +1,7 @@
 "use client"
 import React from 'react'
 import ColorThemeToggle from '@/components/ColorThemeToggle'
-import { asideMenuProxy, closeAsideMenu, openAsideMenu } from '@/stores/asideMenuProxy'
+import { asideMenuProxy, closeAsideMenu, openAsideMenu } from '@/stores/aside-menu-proxy'
 import { ActionIcon, Drawer, Group, rem, Stack, Text } from '@mantine/core'
 import { IconEyeOff, IconMenu4 } from '@tabler/icons-react'
 import { useSnapshot } from 'valtio'
