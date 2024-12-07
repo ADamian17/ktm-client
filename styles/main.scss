@@ -1,0 +1,15 @@
+@media (prefers-color-scheme: dark) {
+  .mantine-Input-input.mantine-TextInput-input[data-error="true"] {
+    &::placeholder {
+      color: var(--mantine-color-dark-3);
+    }
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .mantine-Input-input.mantine-TextInput-input[data-error="true"] {
+    &::placeholder {
+      color: var(--mantine-color-gray-6);
+    }
+  }
+}

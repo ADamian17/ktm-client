@@ -2,9 +2,11 @@ import { ColorSchemeScript, createTheme, MantineProvider } from '@mantine/core';
 import { ModalsProvider } from '@mantine/modals';
 import { Notifications } from '@mantine/notifications';
 
+import HandleUserInactivity from '@/features/HandleUserInactivity';
+
 import '@mantine/core/styles.css';
 import '@mantine/notifications/styles.css';
-import HandleUserInactivity from '@/features/HandleUserInactivity';
+import '@/styles/main.scss';
 
 export const metadata = {
   title: 'Kanban Board',

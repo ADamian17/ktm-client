@@ -20,7 +20,7 @@ const CreateDashboardModal: React.FC = () => {
       size={480}
     >
       <ModalHeader>
-        <Title order={3} c="white">Add New Board</Title>
+        <Title order={3}>Add New Board</Title>
       </ModalHeader>
       <ModalBody p='xs'>
         <Form
@@ -31,6 +31,7 @@ const CreateDashboardModal: React.FC = () => {
           render={({ handleSubmit, submitting }) => (
             <form
               onSubmit={handleSubmit}
+              data-autofocus
             >
               <Stack
                 bg="var(--mantine-color-body)"
