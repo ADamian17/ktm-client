@@ -1,0 +1,7 @@
+mutation CreateBoard($name: String!) {
+  createBoard(input: { name: $name }) {
+    id
+    name
+    uri
+  }
+}

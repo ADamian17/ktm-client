@@ -2,6 +2,8 @@ import HandleSetCurrentBoard from "@/components/HandleSetCurrentBoard";
 import { getOneBoardByUri } from "@/utils/board";
 import { notFound } from "next/navigation";
 
+export const dynamic = 'force-dynamic';
+
 const BoardPage = async ({ params }: { params: Promise<{ boardUri: string }> }) => {
   const { boardUri } = await params;
   const data = await getOneBoardByUri(boardUri);

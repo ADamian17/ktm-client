@@ -1,0 +1,25 @@
+"use server";
+
+import {
+  CreateBoardDocument,
+  CreateBoardMutation,
+} from "@/__generated__/graphql";
+import { executeApiReq } from "@/utils/executeApiReq";
+
+export const createBoardAction = async ({
+  name,
+}: Record<string, any>): Promise<
+  CreateBoardMutation | { error: string } | undefined
+> => {
+  try {
+    const res = await executeApiReq(CreateBoardDocument, { name });
+    return res;
+  } catch (error) {
+    if (error instanceof Error) {
+      const splitMsg = error.message.split(",");
+      const msg = splitMsg.length > 1 ? splitMsg[0] : error.message;
+
+      return { error: msg };
+    }
+  }
+};
