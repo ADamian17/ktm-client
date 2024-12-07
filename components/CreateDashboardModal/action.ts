@@ -8,11 +8,12 @@ import { executeApiReq } from "@/utils/executeApiReq";
 
 export const createBoardAction = async ({
   name,
+  columns,
 }: Record<string, any>): Promise<
   CreateBoardMutation | { error: string } | undefined
 > => {
   try {
-    const res = await executeApiReq(CreateBoardDocument, { name });
+    const res = await executeApiReq(CreateBoardDocument, { name, columns });
     return res;
   } catch (error) {
     if (error instanceof Error) {
