@@ -12,3 +12,7 @@ export const currentBoardProxy = proxy<CurrentBoardState>({
     board: null,
   },
 });
+
+export const resetCurrentBoard = () => {
+  currentBoardProxy.boardData.board = null;
+};

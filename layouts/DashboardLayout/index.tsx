@@ -4,6 +4,7 @@ import AllBoardNavigation from '@/components/AllBoardNavigation';
 import DashboardLayoutAsideMenu from './DashboardLayoutAsideMenu';
 import DashboardLayoutHeader from './DashboardLayoutHeader';
 import CreateDashboardModal from '@/components/CreateDashboardModal';
+import EditDashboardModal from '@/components/EditDashboardModal';
 
 const DashboardLayout = ({ children }: WithChildrenType) => {
   return (
@@ -23,6 +24,7 @@ const DashboardLayout = ({ children }: WithChildrenType) => {
         </DashboardLayoutAsideMenu>
 
         <CreateDashboardModal />
+        <EditDashboardModal />
       </AppShellMain>
     </AppShell>
   )

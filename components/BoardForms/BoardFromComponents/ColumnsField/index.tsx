@@ -5,18 +5,19 @@ import { FieldArray } from 'react-final-form-arrays'
 
 type ColumnsFieldProps = {
   submitting: boolean
+  onRemoveColumn?: (col: Record<string, string | boolean>) => void
 }
 
-const ColumnsField: React.FC<ColumnsFieldProps> = ({ submitting }) => {
-  return (
-    <FieldArray name="columns">
-      {({ fields }) => (
-        <Stack align="stretch" justify="center" gap="xs">
-          {typeof fields?.length !== 'undefined' && fields?.length > 0 && (
-            <Text fw={500} c="white">Board Columns</Text>
-          )}
+const ColumnsField: React.FC<ColumnsFieldProps> = ({ submitting, onRemoveColumn }) => (
+  <FieldArray name="columns">
+    {({ fields }) => (
+      <Stack align="stretch" justify="center" gap="xs">
+        {typeof fields?.length !== 'undefined' && fields?.length > 0 && (
+          <Text fw={500} c="white">Board Columns</Text>
+        )}
 
-          {fields.map((column, index) => (
+        {fields.map((column, index) => {
+          return (
             <Flex key={column} gap="md">
               <Field
                 name={`${column}.name`}
@@ -34,29 +35,37 @@ const ColumnsField: React.FC<ColumnsFieldProps> = ({ submitting }) => {
 
               <CloseButton
                 mt={5}
-                onClick={() => fields.remove(index)}
+                onClick={() => {
+                  const removedItem = { ...fields.remove(index), _destroy: true };
+
+                  if (typeof onRemoveColumn === 'function') {
+                    console.log(removedItem);
+
+                    onRemoveColumn(removedItem);
+                  }
+                }}
                 size="md"
               />
             </Flex>
-          ))}
+          )
+        })}
 
-          <Button
-            color="violet"
-            disabled={submitting}
-            fullWidth
-            onClick={() => fields.push({ name: '' })}
-            radius="lg"
-            size="md"
-            mt="xs"
-            type="button"
-            variant="white"
-          >
-            Add new column
-          </Button>
-        </Stack>
-      )}
-    </FieldArray>
-  )
-}
+        <Button
+          color="violet"
+          disabled={submitting}
+          fullWidth
+          onClick={() => fields.push({ name: '' })}
+          radius="lg"
+          size="md"
+          mt="xs"
+          type="button"
+          variant="white"
+        >
+          Add new column
+        </Button>
+      </Stack>
+    )}
+  </FieldArray>
+)
 
 export default ColumnsField

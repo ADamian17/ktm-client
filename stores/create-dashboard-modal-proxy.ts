@@ -1,10 +1,10 @@
 import { proxy } from "valtio";
 
-interface createDashboardModalProxyState {
+interface CreateDashboardModalProxyState {
   isOpen: boolean;
 }
 
-export const createDashboardModalProxy = proxy<createDashboardModalProxyState>({
+export const createDashboardModalProxy = proxy<CreateDashboardModalProxyState>({
   isOpen: false,
 });
 

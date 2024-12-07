@@ -2,8 +2,13 @@ import { ActionIcon, Menu, MenuDivider, MenuDropdown, MenuItem, MenuLabel, MenuT
 import { IconDotsVertical } from '@tabler/icons-react'
 import React from 'react'
 import LogoutMenuItem from './LogoutMenuItem'
+import { openEditDashboardModal } from '@/stores/edit-dashboard-modal-proxy'
 
 const ActionsMenu = () => {
+  const handleEditBoard = () => {
+    openEditDashboardModal()
+  }
+
   return (
     <Menu shadow="md" width={200} position='bottom-end' offset={25}>
       <MenuTarget>
@@ -14,7 +19,7 @@ const ActionsMenu = () => {
 
       <MenuDropdown>
         <MenuLabel>Board</MenuLabel>
-        <MenuItem>Edit Board</MenuItem>
+        <MenuItem onClick={handleEditBoard}>Edit Board</MenuItem>
         <MenuItem color="red">Delete Board</MenuItem>
         <MenuDivider />
 

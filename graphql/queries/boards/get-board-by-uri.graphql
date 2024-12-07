@@ -7,6 +7,7 @@ query GetOneBoardById($uri: String) {
     updatedAt
     columns {
       nodes {
+        id
         name
         tasks {
           count
