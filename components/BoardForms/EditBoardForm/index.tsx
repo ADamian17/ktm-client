@@ -24,8 +24,6 @@ const EditBoardForm = () => {
 
   const onSubmit: FormProps["onSubmit"] = async (values) => {
     try {
-      console.log('board?.id', board?.id);
-
       const editBoardData = { ...values, id: board?.id, columns: [...values.columns, ...removedColumns.current] }
       const editBoard = editBoardAction.bind(editBoardData)
       const res = await editBoard(editBoardData)
@@ -65,7 +63,7 @@ const EditBoardForm = () => {
 
             <ColumnsField submitting={submitting} onRemoveColumn={onRemoveColumn} />
 
-            <SubmitButton submitting={submitting} text="Create New Board" />
+            <SubmitButton submitting={submitting} text="Save changes" />
           </Stack>
         </form>
       )}

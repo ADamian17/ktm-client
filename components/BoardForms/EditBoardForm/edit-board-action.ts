@@ -10,8 +10,6 @@ export const editBoardAction = async ({
   EditBoardMutation | { error: string } | undefined
 > => {
   try {
-    console.log({ name, columns, id });
-
     const res = await executeApiReq(EditBoardDocument, {
       columns,
       id,

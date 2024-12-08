@@ -39,8 +39,6 @@ const ColumnsField: React.FC<ColumnsFieldProps> = ({ submitting, onRemoveColumn 
                   const removedItem = { ...fields.remove(index), _destroy: true };
 
                   if (typeof onRemoveColumn === 'function') {
-                    console.log(removedItem);
-
                     onRemoveColumn(removedItem);
                   }
                 }}
