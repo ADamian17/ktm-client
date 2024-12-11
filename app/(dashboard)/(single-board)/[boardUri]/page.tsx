@@ -1,6 +1,8 @@
-import HandleSetCurrentBoard from "@/components/HandleSetCurrentBoard";
-import { getOneBoardByUri } from "@/utils/board";
 import { notFound } from "next/navigation";
+import { getOneBoardByUri } from "@/utils/board";
+import EmptyBoardColumns from "@/components/EmptyBoardColumns";
+import HandleSetCurrentBoard from "@/components/HandleSetCurrentBoard";
+import BoardColumns from "@/components/BoardColumns";
 
 export const dynamic = 'force-dynamic';
 
@@ -12,12 +14,13 @@ const BoardPage = async ({ params }: { params: Promise<{ boardUri: string }> }) 
     return notFound();
   }
 
+  const { columns } = data.getOneBoard
+
   return (
     <>
       <HandleSetCurrentBoard board={data.getOneBoard} />
-      <pre>
-        {JSON.stringify(data, undefined, 3)}
-      </pre>
+
+      {columns.count <= 0 ? <EmptyBoardColumns /> : <BoardColumns columns={columns.nodes} />}
     </>
   );
 }

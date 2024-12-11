@@ -12,7 +12,6 @@ const config: CodegenConfig = {
     "__generated__/": {
       preset: "client",
       config: {
-        avoidOptionals: true,
         documentMode: "string",
         skipTypename: true,
         dedupeOperationSuffix: true,
