@@ -16,3 +16,12 @@ export const currentBoardProxy = proxy<CurrentBoardState>({
 export const resetCurrentBoard = () => {
   currentBoardProxy.boardData.board = null;
 };
+
+export const getStatusSelectOptions = () => {
+  return (currentBoardProxy.boardData.board?.columns.nodes ?? []).map(
+    (col) => ({
+      value: col?.id ?? "",
+      label: col?.name ?? "",
+    }),
+  );
+};

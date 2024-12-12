@@ -1,7 +1,8 @@
+import React from 'react'
 import { ActionIcon, Modal, Text } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks';
 import { IconPlus } from '@tabler/icons-react'
-import React from 'react'
+import CreateTaskForm from '@/components/TaskForms/CreateTaskForm';
 
 const AddNewTaskCta = () => {
   const [opened, { open, close }] = useDisclosure(false);
@@ -16,10 +17,16 @@ const AddNewTaskCta = () => {
         </Text>
       </ActionIcon>
 
-      <Modal opened={opened} onClose={close} title="Add new task" centered>
-        Modal content
+      <Modal
+        centered
+        onClose={close}
+        opened={opened}
+        size={480}
+        title="Add new task"
+        withCloseButton={false}
+      >
+        <CreateTaskForm />
       </Modal>
-
     </>
   )
 }
