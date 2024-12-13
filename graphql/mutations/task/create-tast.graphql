@@ -1,0 +1,9 @@
+mutation CreateTask($title: String!, $columnId: ID!, $description: String!) {
+  createTask(
+    input: { title: $title, description: $description, columnId: $columnId }
+  ) {
+    id
+    title
+    description
+  }
+}

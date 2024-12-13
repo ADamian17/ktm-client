@@ -6,7 +6,7 @@ import { Field } from "react-final-form";
 import { IconChevronDown } from '@tabler/icons-react';
 
 const StatusField: React.FC = () => (
-  <Field name="status" validate={(value) => value ? undefined : 'Can\'t be empty'}>
+  <Field name="columnId" validate={(value) => value ? undefined : 'Can\'t be empty'}>
     {({ input, meta }) => (
       <Select
         {...input}

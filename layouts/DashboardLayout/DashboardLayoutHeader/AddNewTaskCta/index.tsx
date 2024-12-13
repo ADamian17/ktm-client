@@ -3,8 +3,10 @@ import { ActionIcon, Modal, Text } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks';
 import { IconPlus } from '@tabler/icons-react'
 import CreateTaskForm from '@/components/TaskForms/CreateTaskForm';
+import { usePathname } from 'next/navigation';
 
 const AddNewTaskCta = () => {
+  const pathname = usePathname();
   const [opened, { open, close }] = useDisclosure(false);
 
   return (
@@ -25,7 +27,7 @@ const AddNewTaskCta = () => {
         title="Add new task"
         withCloseButton={false}
       >
-        <CreateTaskForm />
+        <CreateTaskForm closeModal={close} pathname={pathname} />
       </Modal>
     </>
   )

@@ -8,11 +8,35 @@ import StatusField from "../TaskFormComponents/StatusField";
 import SubmitButton from "@/components/UI/Form/SubmitButton";
 import TasksField from "../TaskFormComponents/TasksField";
 import TitleField from "../TaskFormComponents/TitleField";
+import { revalidateBoardAction } from "./revalidate-board-action";
+import { createTaskAction } from "./create-task-action copy";
 
-const CreateTaskForm: React.FC = () => {
-  const onSubmit: FormProps["onSubmit"] = async (values) => {
+type CreateTaskFormValues = {
+  title: string;
+  description: string;
+  columnId: string
+}
+
+type CreateTaskFormProps = {
+  closeModal: () => void
+  pathname: string
+}
+
+const CreateTaskForm: React.FC<CreateTaskFormProps> = ({ closeModal, pathname }) => {
+  const onSubmit: FormProps<CreateTaskFormValues>["onSubmit"] = async (values) => {
     try {
-      alert(JSON.stringify(values, null, 2))
+      const createTask = createTaskAction.bind(values)
+      const res = await createTask(values)
+
+      if (typeof res === "object" && 'error' in res) {
+        return console.error(res?.error);
+      }
+
+      if (res?.createTask?.id) {
+        const revalidateBoard = revalidateBoardAction.bind(pathname)
+        revalidateBoard(pathname)
+        closeModal()
+      }
     } catch (error) {
       console.error(error);
     }
