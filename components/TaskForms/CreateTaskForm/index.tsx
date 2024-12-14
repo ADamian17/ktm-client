@@ -6,10 +6,10 @@ import { Form, FormProps } from "react-final-form";
 import DescriptionField from "../TaskFormComponents/DescriptionField";
 import StatusField from "../TaskFormComponents/StatusField";
 import SubmitButton from "@/components/UI/Form/SubmitButton";
-import TasksField from "../TaskFormComponents/TasksField";
+import SubtasksField from "../TaskFormComponents/SubtasksField";
 import TitleField from "../TaskFormComponents/TitleField";
 import { revalidateBoardAction } from "./revalidate-board-action";
-import { createTaskAction } from "./create-task-action copy";
+import { createTaskAction } from "./create-task-action";
 
 type CreateTaskFormValues = {
   title: string;
@@ -53,7 +53,7 @@ const CreateTaskForm: React.FC<CreateTaskFormProps> = ({ closeModal, pathname })
 
             <DescriptionField />
 
-            <TasksField submitting={submitting} />
+            <SubtasksField submitting={submitting} />
 
             <StatusField />
 

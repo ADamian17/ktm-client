@@ -17,6 +17,8 @@ query GetOneBoardById($uri: String) {
             title
             description
             subtasks {
+              completedSubtasks
+              count
               nodes {
                 id
                 title

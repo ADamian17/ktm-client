@@ -11,6 +11,7 @@ export const createTaskAction = async ({
   title,
   description,
   columnId,
+  subtasks,
 }: CreateTaskMutationVariables): Promise<
   CreateTaskMutation | { error: string } | undefined
 > => {
@@ -19,6 +20,7 @@ export const createTaskAction = async ({
       title,
       description,
       columnId,
+      subtasks,
     });
 
     return res;

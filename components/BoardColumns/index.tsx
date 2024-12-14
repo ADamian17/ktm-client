@@ -1,7 +1,8 @@
+"use client";
 import React from "react";
 
 import { GetOneBoardByIdQuery } from "@/__generated__/graphql";
-import { SimpleGrid } from "@mantine/core";
+import { Card, Flex, ScrollArea, Stack, Text } from "@mantine/core";
 
 type BoardColumnsType = {
   columns: GetOneBoardByIdQuery["getOneBoard"]["columns"]["nodes"];
@@ -10,24 +11,39 @@ type BoardColumnsType = {
 const BoardColumns: React.FC<BoardColumnsType> = ({ columns }) => {
   const columnsList = (columns ?? []).map((column) => {
     return (
-      <section key={column?.id}>
-        <p>{column?.name} ({column?.tasks?.count})</p>
+      <Stack w={280} key={column?.id}>
+        <Text mb="xs">{column?.name} ({column?.tasks?.count})</Text>
 
-        <ul>
-          {(column?.tasks?.nodes ?? []).map(task => (
-            <li key={task?.id}>
-              <p>{task?.title}</p>
-            </li>
-          ))}
-        </ul>
-      </section>
+        <ScrollArea maw="100%" mah="82dvh">
+          <Stack>
+            {(column?.tasks?.nodes ?? []).map(task => (
+              <Card key={task?.id} withBorder>
+                <Text fz="md" fw={500} style={{ wordBreak: "break-word" }}>
+                  {task?.title}
+                </Text>
+
+                <Text fz="sm" c="dimmed" style={{ wordBreak: "break-word" }}>
+                  {task?.subtasks.completedSubtasks} of {task?.subtasks.count} subtasks
+                </Text>
+              </Card>
+            ))}
+          </Stack>
+        </ScrollArea>
+      </Stack>
     )
   });
 
   return (
-    <SimpleGrid cols={3}>
-      {columnsList}
-    </SimpleGrid>
+    <ScrollArea maw="100%">
+      <Flex
+        align="stretch"
+        direction="row"
+        gap="md"
+        justify="flex-start"
+      >
+        {columnsList}
+      </Flex>
+    </ScrollArea>
   )
 };
 

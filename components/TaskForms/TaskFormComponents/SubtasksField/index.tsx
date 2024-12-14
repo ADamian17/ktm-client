@@ -9,16 +9,16 @@ type TasksFieldProps = {
   submitting: boolean
 }
 
-const TasksField: React.FC<TasksFieldProps> = ({ submitting }) => (
-  <FieldArray name="tasks">
+const SubtasksField: React.FC<TasksFieldProps> = ({ submitting }) => (
+  <FieldArray name="subtasks">
     {({ fields }) => (
       <Stack align="stretch" justify="center" gap="xs">
         <Text fw={500}>Subtasks</Text>
 
-        {fields.map((column, index) => (
+        {fields.map((subtask, index) => (
           <TextFieldWithCloseIcon
-            fieldName={`${column}.name`}
-            key={column}
+            fieldName={`${subtask}.title`}
+            key={subtask}
             onClick={() => { fields.remove(index) }}
           />
         ))}
@@ -33,4 +33,4 @@ const TasksField: React.FC<TasksFieldProps> = ({ submitting }) => (
   </FieldArray>
 )
 
-export default TasksField
+export default SubtasksField
